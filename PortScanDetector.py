@@ -111,13 +111,15 @@ def fanOutRate(fcTable, lock):
                 connectPerFiveMin += 1
         
         if connectPerSec > 5:
-            print(f"\t Port Scanning detected by IP:{fcTable[key][0].srcIP} | fan out rate per:  Sec:{connectPerSec} Min:{connectPerMin} 5Min:{connectPerFiveMin}")
-
+            print(f"\t Port Scanning detected by IP:{fcTable[key][0].srcIP} | fan out rate per:  Sec:{connectPerSec} Min:{connectPerMin} 5Min:{connectPerFiveMin}\n")
+            print(f"\tReason: Fan-out rate per sec = {connectPerSec} (must be less than 5.)\n")
         if connectPerMin > 100:
-            print(f"\t Port Scanning detected by IP:{fcTable[key][0].srcIP} | fan out rate per:  Sec:{connectPerSec} Min:{connectPerMin} 5Min:{connectPerFiveMin}")
+            print(f"\t Port Scanning detected by IP:{fcTable[key][0].srcIP} | fan out rate per:  Sec:{connectPerSec} Min:{connectPerMin} 5Min:{connectPerFiveMin}\n")
+            print(f"\tReason: Fan-out rate per min = {connectPerMin} (must be less than 5.)\n")
 
         if connectPerFiveMin > 300:
-            print(f"\t Port Scanning detected by IP:{fcTable[key][0].srcIP} | fan out rate per:  Sec:{connectPerSec} Min:{connectPerMin} 5Min:{connectPerFiveMin}")
+            print(f"\t Port Scanning detected by IP:{fcTable[key][0].srcIP} | fan out rate per:  Sec:{connectPerSec} Min:{connectPerMin} 5Min:{connectPerFiveMin}\n")
+            print(f"\tReason: Fan-out rate per 5 min = {connectPerFiveMin} (must be less than 5.)\n")
     #print("Ending FOR...\n")
 
         
@@ -168,5 +170,7 @@ while 1:
 
 
 # print(f"\t System Time: {time.time()}")
+
+
 
 
