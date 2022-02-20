@@ -115,11 +115,11 @@ def fanOutRate(fcTable, lock):
             print(f"\tReason: Fan-out rate per sec = {connectPerSec} (must be less than 5.)\n")
         if connectPerMin > 100:
             print(f"\t Port Scanning detected by IP:{fcTable[key][0].srcIP} | fan out rate per:  Sec:{connectPerSec} Min:{connectPerMin} 5Min:{connectPerFiveMin}\n")
-            print(f"\tReason: Fan-out rate per min = {connectPerMin} (must be less than 5.)\n")
+            print(f"\tReason: Fan-out rate per min = {connectPerMin} (must be less than 100.)\n")
 
         if connectPerFiveMin > 300:
             print(f"\t Port Scanning detected by IP:{fcTable[key][0].srcIP} | fan out rate per:  Sec:{connectPerSec} Min:{connectPerMin} 5Min:{connectPerFiveMin}\n")
-            print(f"\tReason: Fan-out rate per 5 min = {connectPerFiveMin} (must be less than 5.)\n")
+            print(f"\tReason: Fan-out rate per 5 min = {connectPerFiveMin} (must be less than 300.)\n")
     #print("Ending FOR...\n")
 
         
@@ -145,31 +145,6 @@ while 1:
     tableManagment.join()
     ttlChecker.join()
     fanOutCalc.join()
-
-    
-    
-
-
-#Test Code
-# scanForFirstConnect(fcTable)
-# print("Before ttlCheck.\n")
-# for key in fcTable:
-#     for fc in fcTable[key]:
-#         print(f"\t srcIP: {fc.srcIP} dstIP: {fc.dstIP} dstPort: {fc.dstPort} TimeStamp: {fc.timeStamp} TimeActive {time.time() - fc.timeStamp}")
-# time.sleep(60.0)
-# print("After 5 min wait\n")
-# for key in fcTable:
-#     for fc in fcTable[key]:
-#         print(f"\t srcIP: {fc.srcIP} dstIP: {fc.dstIP} dstPort: {fc.dstPort} TimeStamp: {fc.timeStamp} TimeActive {time.time() - fc.timeStamp}")
-
-# print("After TTL Check")
-# ttlCheck(fcTable)
-# for key in fcTable:
-#     for fc in fcTable[key]:
-#         print(f"\t srcIP: {fc.srcIP} dstIP: {fc.dstIP} dstPort: {fc.dstPort} TimeStamp: {fc.timeStamp} TimeActive {time.time() - fc.timeStamp}")
-
-
-# print(f"\t System Time: {time.time()}")
 
 
 
